@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Import Montserrat Font from Google Fonts-->
+          <!-- Import Nunito Sans Font from Google Fonts -->
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+  
+          <!-- Use Ionic Framework for Icons -->
+          <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+          <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  
+          <title>ALEXA Manila | Nexar Tab M8</title>
+  
+          <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  
+      <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+   <header>
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+       <!-- Header -->
+       <header id="header">
+           <h1><a href="home.html">A L E X A Manila</a></h1>
+           <nav id="nav">
+               <ul>
+                   <li><a href="shop.html">STORE</a></li>
+                   <li><a href="cart.html">CART</a></li>
+                   <li><a href="about-us.html">ABOUT US</a></li>
+                   <li><a id="order-now" href="shop.html">ORDER NOW</a></li>
+               </ul>
+           </nav>
+  </div>
+  </header>
+  <section id="hero">
+  <div class="hero-content">
+      <h2>A L E X A Manila</h2>
+      <h3>The Country's Top of the Line Electronics Store</h3><br>
+      <p>Discover our finest quality products just for you</p><br>
+      <a href="shop.html">Shop Now</a>
+  </div>
+  
+  <a href="#first-panel" class="down-arrow" id="down-arrow">
+      <p class="learn-more">Learn More</p>
+      <ion-icon name="arrow-down-outline"></ion-icon>
+  </a>
+  </section>
+  <!-- Second Navbar (Sticky Navbar) -->
+  <header id="sticky-header">
+  <h1><a href="home.html">A L E X A Manila</a></h1>
+  <nav id="sticky-nav">
+    <ul>
+        <li><a href="shop.html">STORE</a></li>
+        <li><a href="cart.html">CART</a></li>
+        <li><a href="about-us.html">ABOUT US</a></li>
+        <li><a id="order-now-2" href="shop.html">ORDER NOW</a></li>
+    </ul>
+  </nav>
+  </header>
+  <main>
+    <div class="checkout-container">
+      <h1>Checkout</h1>
+      <p>Review your order and enter your shipping information below:</p>
+      
+      <!-- Display cart items again on the checkout page -->
+      <div id="checkout-items"></div>
+
+      <form>
+        <label for="address">Shipping Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="payment">Payment Method:</label>
+        <select id="payment" name="payment" required>
+          <option value="credit-card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="cash-on-delivery">Cash on Delivery</option>
+
+        </select>
+
+        <button type="submit">Place Order</button>
+      </form>
+    </div>
+  </main>
+  
+            <!-- Footer -->
+            <footer id="footer">
+              <div class="footer-icon-wrapper">
+                  <a href="#">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                  <a href="#">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                  <a href="#">
+                      <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                  <a href="#">
+                      <ion-icon name="globe-outline"></ion-icon>
+                  </a>
+                  <a href="#">
+                      <ion-icon name="mail-outline"></ion-icon>
+                  </a>
+              </div>
+              <div class="footer-text-wrapper">
+                  <p>&copy; ALEXA Manila | BSCS - CS11S4 | GROUP 1</p>
+                  <p>Latuja | Gaw | Payawal | Ong | Santos</p>
+              </div>
+          </footer>
+
+  <script>
+    // Function to render the cart items on the checkout page
+    function renderCheckout() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const checkoutItemsContainer = document.getElementById('checkout-items');
+
+      if (cart.length === 0) {
+        checkoutItemsContainer.innerHTML = '<p>Your cart is empty. Please add items to your cart before proceeding.</p>';
+      } else {
+        checkoutItemsContainer.innerHTML = ''; // Clear any existing content
+
+        // Loop through the cart and display each item
+        cart.forEach(item => {
+          const checkoutItem = document.createElement('div');
+          checkoutItem.classList.add('cart-item');
+
+          checkoutItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-details">
+              <h2>${item.name}</h2>
+              <p>${item.price}</p>
+            </div>
+          `;
+
+          checkoutItemsContainer.appendChild(checkoutItem);
+        });
+      }
+    }
+
+    // Render the checkout items on page load
+    renderCheckout();
+  </script>
+  <script src="assets/scripts/sticky-navbar.js"></script>
+  <script src="assets/scripts/scroll-down-hero.js"></script>
+  <script src="assets/scripts/scroll-snap.js"></script>
+</body>
+</html>

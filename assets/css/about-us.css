@@ -1,0 +1,320 @@
+/* Albert Renz Gaw - Kevin Payawal */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(214, 214, 214, 0.75);
+    margin: 0;
+    padding: 0;
+}
+
+/* Page Wrapper */
+#page-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* NavBar */
+#header {
+    background-color: transparent;
+    color: white;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    position: absolute;
+}
+
+    #header h1 a {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+
+    #nav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+        #nav ul li {
+            margin-left: 20px;
+        }
+
+            #nav ul li:nth-child(3) {
+                color: #E44C65;
+            }
+
+        #nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.5s ease;
+        }
+
+            #nav ul li a:hover {
+                color: #E44C65;
+            }
+
+        #order-now {
+            background: #E44C65;
+            border-radius: 5px;
+            padding: 10px;
+            transition: color 0.5s ease, background 0.5s ease !important;
+        }
+
+            #order-now:hover {
+                background: #FF617B !important;
+                color: #FFFFFF !important;
+            }
+
+.panel-wrapper {
+    height: 100vh;
+}
+
+#summary {
+    background: #1C1D26;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    scroll-snap-align: start;
+}
+
+    #summary h1 {
+        font-size: 40px;
+        color: #FFFFFF;
+        text-transform: uppercase;
+    }
+
+    #summary hr {
+        height: 6px;
+        background: #E44C65;
+        border: none;
+        margin: 25px auto;
+        width: 20%;
+    }
+
+    #summary p {
+        font-size: 20px;
+        color: #FFFFFF;
+        line-height: 40px;
+        margin-bottom: 50px;
+    }
+
+    .summary-text {
+        text-align: center;
+        padding: 0 350px;
+    }
+
+        .summary-text span {
+            font-size: 40px;
+            margin: 0 20px;
+			padding: 0 20px;
+			font-weight: 800;
+            background-color: transparent;
+            color: #FFFFFF;
+            width: 325px;
+            height: 125px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            border: 4px solid #E44C65;
+        }
+
+            .summary-text span p {
+                margin-bottom: 0 !important;
+            }
+
+#order-now-panel {
+    height: 25%;
+    background: #E44C65;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .order-left-content h1 {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    .order-left-content p{
+        font-size: 20px;
+    }
+
+    .order-right-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        .order-right-content a {
+            text-decoration: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            padding: 10px 60px;
+            margin: 10px 100px;
+            border: 2px solid #FFFFFF;
+            border-radius: 5px;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+            .order-right-content a:hover {
+                background: #FFFFFF;
+                color: #E44C65;
+            }
+
+        .order-right-content .order-now-3 {
+            background: #FFFFFF;
+            color: #E44C65;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+            .order-right-content .order-now-3:hover {
+                background: #E44C65;
+                color: #FFFFFF;
+                transition: background 0.5s ease, color 0.5s ease;
+            }
+
+#footer {
+    height: 37.5vh;
+    background: #1F2429;
+    color: #8F9193;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .footer-icon-wrapper {
+        padding: 50px;
+    }
+
+        .footer-icon-wrapper a {
+            font-size: 40px;
+            text-decoration: none;
+            color: #8F9193;
+            margin: 0 20px;
+            transition: color 0.5s ease;
+        }
+
+        .footer-icon-wrapper a:hover {
+            color: #FFFFFF;
+        }
+
+    .footer-text-wrapper {
+        font-size: 20px;
+        text-align: center;
+    }
+
+        .footer-text-wrapper p:last-child {
+            font-size: 12px;
+            text-align: center;
+        }
+
+.cuoverlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1001;
+}
+
+    .cuoverlay:target{
+        visibility: visible;
+        opacity: 1;
+    }
+
+.cuoverlay-wrapper{
+    margin: 70px auto;
+    padding: 20px;
+    background: #e7e7e7;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition:all 5s ease-in-out;
+}
+
+    .cuoverlay-wrapper h2{
+        margin-top: 0;
+        color: #333;
+    }
+
+    .cuoverlay-wrapper .close{
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .cuoverlay-wrapper .cucontent{
+        max-height: 30%;
+        overflow: auto;
+    }
+
+/*form design */
+.cucontainer {
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    padding: 20px 0;
+}
+
+form label {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: #333;
+}
+
+input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=tel] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #E44C65;
+    color: #fff;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}

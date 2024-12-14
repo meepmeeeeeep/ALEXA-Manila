@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Import Montserrat Font from Google Fonts-->
+        <!-- Import Nunito Sans Font from Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+
+        <!-- Use Ionic Framework for Icons -->
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+        <title>ALEXA Manila | Cart</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    #nav li:nth-child(2), #sticky-nav li:nth-child(2) {
+      color:#E44C65;
+      font-weight: 600;
+    }
+
+    #cart-container {
+      width: 80%;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      min-height: 100vh;
+    }
+
+    #cart-container h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .cart-item img {
+      width: 100px;
+      height: auto;
+      margin-right: 20px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .cart-item h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .cart-item p {
+      margin: 5px 0;
+    }
+
+    .remove-item {
+      color: red;
+      cursor: pointer;
+    }
+
+    .checkout {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .checkout button {
+      padding: 10px 20px;
+      background-color: #FF617B;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .checkout button:hover {
+      background-color: #E44C65;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+       <!-- Header -->
+       <header id="header">
+           <h1><a href="home.html">A L E X A Manila</a></h1>
+           <nav id="nav">
+               <ul>
+                   <li><a href="shop.html">STORE</a></li>
+                   <li>CART</li>
+                   <li><a href="about-us.html">ABOUT US</a></li>
+                   <li><a id="order-now" href="shop.html">ORDER NOW</a></li>
+               </ul>
+           </nav>
+  </div>
+  </header>
+  <section id="hero">
+  <div class="hero-content">
+      <h2>A L E X A Manila</h2>
+      <h3>The Country's Top of the Line Electronics Store</h3><br>
+      <p>Discover our finest quality products just for you</p><br>
+      <a href="" id="shop-now">Shop Now</a>
+  </div>
+  
+  <a href="#cart-container" class="down-arrow" id="down-arrow">
+      <p class="learn-more">Learn More</p>
+      <ion-icon name="arrow-down-outline"></ion-icon>
+  </a>
+  </section>
+  <!-- Second Navbar (Sticky Navbar) -->
+  <header id="sticky-header">
+  <h1><a href="home.html">A L E X A Manila</a></h1>
+  <nav id="sticky-nav">
+    <ul>
+        <li><a href="shop.html">STORE</a></li>
+        <li>CART</li>
+        <li><a href="about-us.html">ABOUT US</a></li>
+        <li><a id="order-now-2" href="shop.html">ORDER NOW</a></li>
+    </ul>
+  </nav>
+  </header>
+  <main>
+    <div id="cart-container">
+      <h1>Your Cart</h1>
+
+      <div id="cart-items"></div> <!-- Cart items will be loaded here -->
+
+      <div class="checkout">
+        <button onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+      </div>
+    </div>
+  </main>
+
+            <!-- Footer -->
+            <footer id="footer">
+              <div class="footer-icon-wrapper">
+                  <a href="#">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                  <a href="#">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                  <a href="#">
+                      <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                  <a href="#">
+                      <ion-icon name="globe-outline"></ion-icon>
+                  </a>
+                  <a href="#">
+                      <ion-icon name="mail-outline"></ion-icon>
+                  </a>
+              </div>
+              <div class="footer-text-wrapper">
+                  <p>&copy; ALEXA Manila | BSCS - CS11S4 | GROUP 1</p>
+                  <p>Latuja | Gaw | Payawal | Ong | Santos</p>
+              </div>
+          </footer>
+
+  <script>
+    // Function to render the cart items dynamically
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItemsContainer = document.getElementById('cart-items');
+      
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+      } else {
+        cartItemsContainer.innerHTML = ''; // Clear any existing content
+        
+        // Loop through the cart and display each item
+        cart.forEach(item => {
+          const cartItem = document.createElement('div');
+          cartItem.classList.add('cart-item');
+          
+          cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-details">
+              <h2>${item.name}</h2>
+              <p>${item.price}</p>
+            </div>
+            <span class="remove-item" onclick="removeFromCart('${item.name}')">Remove</span>
+          `;
+          
+          cartItemsContainer.appendChild(cartItem);
+        });
+      }
+    }
+
+    // Function to remove item from cart
+    function removeFromCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart = cart.filter(item => item.name !== itemName); // Remove the item
+      localStorage.setItem('cart', JSON.stringify(cart)); // Save the updated cart
+      renderCart(); // Re-render the cart
+    }
+
+    // Render the cart on page load
+    renderCart();
+  </script>
+   <script src="assets/scripts/sticky-navbar.js"></script>
+   <script src="assets/scripts/scroll-down-cart.js"></script>
+   <script src="assets/scripts/scroll-snap.js"></script>
+</body>
+</html>
